@@ -1,0 +1,913 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diagnóstico de Capacidad Operativa · Silvina Calosso</title>
+
+    <!-- Open Graph / LinkedIn -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://diagnostico-silvinacalosso.netlify.app/" />
+    <meta property="og:title" content="¿Tu rendimiento depende de tu sobreesfuerzo?" />
+    <meta property="og:description"
+        content="Diagnóstico gratuito de Capacidad Operativa. Descubrí cómo tu sistema nervioso impacta en tu energía y claridad. 2 minutos. Resultado inmediato." />
+    <meta property="og:image" content="https://diagnostico-silvinacalosso.netlify.app/diagnostico-og.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="627" />
+    <meta property="og:locale" content="es_AR" />
+    <meta property="og:site_name" content="Silvina Calosso · Bienestar Inteligente" />
+
+    <!-- Twitter Card (por si acaso) -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="¿Tu rendimiento depende de tu sobreesfuerzo?" />
+    <meta name="twitter:description"
+        content="Diagnóstico gratuito de Capacidad Operativa. Descubrí cómo tu sistema nervioso impacta en tu energía y claridad. 2 minutos. Resultado inmediato." />
+    <meta name="twitter:image" content="https://diagnostico-silvinacalosso.netlify.app/diagnostico-og.png" />
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=DM+Sans:wght@300;400;500&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --verde: #4a7c59;
+            --verde-claro: #e8f0eb;
+            --verde-medio: #c5d9cb;
+            --verde-oscuro: #2e5239;
+            --crema: #f7f5f0;
+            --texto: #1a1a1a;
+            --texto-suave: #5a5a5a;
+            --borde: #ddd8cf;
+            --amber: #b5740a;
+            --amber-bg: #fdf3e0;
+            --rojo: #9b2c2c;
+            --rojo-bg: #fdf0f0;
+            --linkedin: #0077b5;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background-color: var(--crema);
+            color: var(--texto);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .logo-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: var(--verde);
+            letter-spacing: 0.08em;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .logo-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--verde);
+            display: inline-block;
+        }
+
+        /* Card principal */
+        .card {
+            background: white;
+            border-radius: 20px;
+            border: 1px solid var(--borde);
+            padding: 2.5rem 2rem;
+            max-width: 560px;
+            width: 100%;
+            animation: fadeUp 0.4s ease both;
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(16px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        .screen {
+            animation: fadeIn 0.3s ease both;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        /* Pantalla inicio */
+        .intro-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background: var(--verde-claro);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+        }
+
+        .intro-icon svg {
+            width: 24px;
+            height: 24px;
+            color: var(--verde);
+        }
+
+        .intro-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.75rem;
+            font-weight: 600;
+            color: var(--texto);
+            text-align: center;
+            line-height: 1.3;
+            margin-bottom: 0.75rem;
+        }
+
+        .intro-desc {
+            font-size: 0.95rem;
+            color: var(--texto-suave);
+            text-align: center;
+            line-height: 1.7;
+            margin-bottom: 2rem;
+        }
+
+        .badge-row {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+
+        .badge {
+            font-size: 0.75rem;
+            color: var(--verde-oscuro);
+            background: var(--verde-claro);
+            border: 1px solid var(--verde-medio);
+            padding: 4px 12px;
+            border-radius: 100px;
+            font-weight: 500;
+        }
+
+        /* Botones */
+        .btn-primary {
+            width: 100%;
+            background: var(--verde);
+            color: white;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 500;
+            padding: 1rem 1.5rem;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: background 0.2s ease, transform 0.1s ease;
+            letter-spacing: 0.02em;
+        }
+
+        .btn-primary:hover {
+            background: var(--verde-oscuro);
+        }
+
+        .btn-primary:active {
+            transform: scale(0.98);
+        }
+
+        /* Preguntas */
+        .progress-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .q-counter {
+            font-size: 0.78rem;
+            font-weight: 500;
+            color: var(--texto-suave);
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        .progress-track {
+            width: 120px;
+            height: 4px;
+            background: var(--verde-claro);
+            border-radius: 2px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: var(--verde);
+            border-radius: 2px;
+            transition: width 0.4s ease;
+        }
+
+        .q-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.45rem;
+            font-weight: 500;
+            line-height: 1.4;
+            margin-bottom: 1.75rem;
+            color: var(--texto);
+        }
+
+        .options-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .option-btn {
+            border: 1.5px solid var(--borde);
+            background: white;
+            text-align: left;
+            width: 100%;
+            padding: 1rem 1.1rem;
+            border-radius: 12px;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 400;
+            color: var(--texto);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.18s ease;
+            line-height: 1.4;
+        }
+
+        .option-btn:hover {
+            border-color: var(--verde);
+            background: var(--verde-claro);
+            color: var(--verde-oscuro);
+        }
+
+        .option-btn.selected {
+            border-color: var(--verde);
+            background: var(--verde-claro);
+            color: var(--verde-oscuro);
+        }
+
+        .option-arrow {
+            flex-shrink: 0;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            border: 1.5px solid var(--borde);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.18s ease;
+        }
+
+        .option-btn:hover .option-arrow,
+        .option-btn.selected .option-arrow {
+            border-color: var(--verde);
+            background: var(--verde);
+        }
+
+        .option-arrow svg {
+            width: 9px;
+            height: 9px;
+            color: white;
+        }
+
+        /* Pantalla nombre */
+        .name-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .name-sub {
+            font-size: 0.9rem;
+            color: var(--texto-suave);
+            text-align: center;
+            margin-bottom: 1.75rem;
+            line-height: 1.6;
+        }
+
+        .name-input {
+            width: 100%;
+            padding: 0.9rem 1rem;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 1rem;
+            border: 1.5px solid var(--borde);
+            border-radius: 12px;
+            outline: none;
+            transition: border-color 0.2s;
+            margin-bottom: 1rem;
+            background: white;
+            color: var(--texto);
+        }
+
+        .name-input:focus {
+            border-color: var(--verde);
+        }
+
+        /* Resultados */
+        .result-icon-wrap {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+        }
+
+        .result-icon-wrap svg {
+            width: 28px;
+            height: 28px;
+        }
+
+        .result-name {
+            font-size: 0.85rem;
+            color: var(--texto-suave);
+            text-align: center;
+            margin-bottom: 4px;
+        }
+
+        .result-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .gauge-track {
+            width: 100%;
+            height: 6px;
+            background: var(--crema);
+            border-radius: 3px;
+            overflow: hidden;
+            margin-bottom: 1.25rem;
+        }
+
+        .gauge-fill {
+            height: 100%;
+            border-radius: 3px;
+            transition: width 1.2s cubic-bezier(.16, 1, .3, 1);
+        }
+
+        .result-desc {
+            font-size: 0.92rem;
+            color: var(--texto-suave);
+            line-height: 1.75;
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-box {
+            padding: 1.25rem;
+            border-radius: 14px;
+            border: 1px solid var(--borde);
+            background: var(--crema);
+            margin-bottom: 1rem;
+        }
+
+        .cta-box-title {
+            font-weight: 500;
+            font-size: 0.9rem;
+            margin-bottom: 4px;
+        }
+
+        .cta-box-sub {
+            font-size: 0.83rem;
+            color: var(--texto-suave);
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .btn-cta {
+            width: 100%;
+            background: var(--verde);
+            color: white;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 500;
+            padding: 0.85rem 1rem;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            text-decoration: none;
+            transition: background 0.2s;
+        }
+
+        .btn-cta:hover {
+            background: var(--verde-oscuro);
+        }
+
+        .btn-share {
+            width: 100%;
+            background: white;
+            color: var(--linkedin);
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.88rem;
+            font-weight: 500;
+            padding: 0.75rem 1rem;
+            border: 1px solid var(--linkedin);
+            border-radius: 10px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: all 0.2s;
+            margin-top: 8px;
+        }
+
+        .btn-share:hover {
+            background: var(--linkedin);
+            color: white;
+        }
+
+        .share-copied {
+            font-size: 0.8rem;
+            color: var(--verde);
+            text-align: center;
+            margin-top: 6px;
+            height: 18px;
+            transition: opacity 0.3s;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            margin-top: 1.5rem;
+            font-size: 0.78rem;
+            color: #a09890;
+        }
+
+        .footer a {
+            color: var(--verde);
+            text-decoration: none;
+        }
+
+        /* Mobile */
+        @media (max-width: 480px) {
+            .card {
+                padding: 2rem 1.25rem;
+            }
+
+            .intro-title {
+                font-size: 1.5rem;
+            }
+
+            .q-text {
+                font-size: 1.25rem;
+            }
+
+            .result-title {
+                font-size: 1.7rem;
+            }
+
+            .progress-track {
+                width: 90px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Formulario oculto requerido por Netlify Forms para detección en build -->
+    <form name="diagnostico" netlify netlify-honeypot="bot-field" hidden>
+        <input type="hidden" name="form-name" value="diagnostico" />
+        <input type="text" name="nombre" />
+        <input type="email" name="email" />
+        <input type="text" name="perfil" />
+        <input type="text" name="puntaje" />
+    </form>
+
+    <div class="header">
+        <div class="logo-text">
+            <span class="logo-dot"></span>
+            Diagnóstico de Capacidad Operativa
+            <span class="logo-dot"></span>
+        </div>
+    </div>
+
+    <div class="card">
+
+        <!-- PANTALLA INICIO -->
+        <div id="intro-screen" class="screen">
+            <div class="intro-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" style="color:var(--verde)">
+                    <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
+                </svg>
+            </div>
+            <h2 class="intro-title">¿Tu rendimiento depende de tu sobreesfuerzo?</h2>
+            <p class="intro-desc">Este diagnóstico analiza cómo tu sistema nervioso y tu biología actual impactan en tu
+                energía, tu claridad y tu capacidad de liderar.</p>
+            <div class="badge-row">
+                <span class="badge">2 minutos</span>
+                <span class="badge">6 preguntas</span>
+                <span class="badge">Resultado inmediato</span>
+            </div>
+            <button class="btn-primary" onclick="startTest()">Comenzar diagnóstico</button>
+        </div>
+
+        <!-- PANTALLA PREGUNTAS -->
+        <div id="question-screen" class="screen hidden">
+            <div class="progress-header">
+                <span class="q-counter" id="q-counter">Pregunta 1 de 6</span>
+                <div class="progress-track">
+                    <div class="progress-fill" id="progress-fill" style="width:16.6%"></div>
+                </div>
+            </div>
+            <p class="q-text" id="q-text"></p>
+            <div class="options-list" id="options-container"></div>
+        </div>
+
+        <!-- PANTALLA NOMBRE + EMAIL -->
+        <div id="name-screen" class="screen hidden">
+            <div class="intro-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" style="color:var(--verde)">
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                    <circle cx="12" cy="7" r="4" />
+                </svg>
+            </div>
+            <h2 class="name-title">Ya casi está tu diagnóstico</h2>
+            <p class="name-sub">Completá tus datos para ver el resultado y recibir tu protocolo personalizado por email.
+            </p>
+            <input type="text" id="name-input" class="name-input" placeholder="Tu nombre..."
+                autocomplete="given-name" />
+            <input type="email" id="email-input" class="name-input" placeholder="Tu email..." autocomplete="email"
+                style="margin-top: -4px;" />
+            <div id="email-error" style="font-size:0.8rem; color:#9b2c2c; margin: -8px 0 10px; display:none;">Por favor
+                ingresá un email válido.</div>
+            <div style="font-size:0.75rem; color:var(--texto-suave); margin-bottom:1rem; line-height:1.5;">
+                🔒 Tu información es confidencial. No compartimos tus datos con terceros.
+            </div>
+            <button class="btn-primary" onclick="submitName()">Ver mi resultado →</button>
+        </div>
+
+        <!-- PANTALLA RESULTADOS -->
+        <div id="result-screen" class="screen hidden">
+            <div style="text-align:center; margin-bottom: 1.25rem;">
+                <div class="result-icon-wrap" id="result-icon"></div>
+                <div class="result-name" id="result-name-greeting"></div>
+                <div class="result-title" id="result-title"></div>
+            </div>
+            <div class="gauge-track">
+                <div class="gauge-fill" id="gauge-fill" style="width:0%"></div>
+            </div>
+            <p class="result-desc" id="result-desc"></p>
+            <div class="cta-box" id="cta-box">
+                <div class="cta-box-title" id="cta-title"></div>
+                <div class="cta-box-sub" id="cta-sub"></div>
+                <a id="cta-btn" href="#" target="_blank" class="btn-cta">
+                    <span id="cta-icon-placeholder"></span>
+                    <span id="cta-btn-text"></span>
+                </a>
+                <button class="btn-share" onclick="shareResult()">
+                    <svg viewBox="0 0 24 24" fill="currentColor" style="width:16px;height:16px">
+                        <path
+                            d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                    </svg>
+                    Compartir en LinkedIn
+                </button>
+                <div class="share-copied" id="share-copied"></div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="footer">
+        © Silvina Calosso · <a href="https://bienestar-inteligente.netlify.app" target="_blank">Bienestar
+            Inteligente</a>
+    </div>
+
+    <script>
+        const WA = "542235578289";
+
+        const questions = [
+            {
+                text: "Al terminar tu jornada, ¿sentís que tu mente sigue \"encendida\" aunque tu cuerpo esté físicamente agotado?",
+                options: [
+                    { text: "Casi nunca, desconecto con facilidad", score: 0 },
+                    { text: "A veces, me cuesta un par de horas", score: 2 },
+                    { text: "Casi siempre, me cuesta conciliar el sueño", score: 5 }
+                ]
+            },
+            {
+                text: "¿Cuántas veces al día sentís que postergás decisiones complejas por falta de claridad o \"neblina mental\"?",
+                options: [
+                    { text: "Rara vez, me siento ágil", score: 0 },
+                    { text: "Ocasionalmente, sobre todo por la tarde", score: 2 },
+                    { text: "Frecuentemente, siento que me falta enfoque", score: 5 }
+                ]
+            },
+            {
+                text: "Tu rutina de bienestar (movimiento, descanso, alimentación), ¿la vivís como recuperación o como una tarea más?",
+                options: [
+                    { text: "Es mi combustible, lo disfruto", score: 0 },
+                    { text: "Me cuesta mantenerla por falta de tiempo", score: 2 },
+                    { text: "Es una obligación que no logro sostener", score: 5 }
+                ]
+            },
+            {
+                text: "¿Sentís irritabilidad o impaciencia ante situaciones que antes manejabas con más calma?",
+                options: [
+                    { text: "No, mantengo la ecuanimidad", score: 0 },
+                    { text: "A veces pierdo la paciencia más rápido", score: 2 },
+                    { text: "Sí, mi reactividad está en niveles altos", score: 5 }
+                ]
+            },
+            {
+                text: "¿Dependés de estimulantes (café, azúcar) o de pantallas para sostener tu energía durante el día?",
+                options: [
+                    { text: "Solo por placer, no por necesidad", score: 0 },
+                    { text: "Los uso para superar los \"bajones\"", score: 2 },
+                    { text: "Son mi motor principal para funcionar", score: 5 }
+                ]
+            },
+            {
+                text: "Si hoy tuvieras una nueva oportunidad de proyecto, ¿sentís que tenés energía real para liderarlo?",
+                options: [
+                    { text: "Totalmente, estoy disponible", score: 0 },
+                    { text: "Me entusiasma pero me da miedo el cansancio", score: 2 },
+                    { text: "No puedo sumar ni una sola tarea más", score: 5 }
+                ]
+            }
+        ];
+
+        let current = 0;
+        let total = 0;
+        let userName = "";
+
+        function show(id) {
+            ['intro-screen', 'question-screen', 'name-screen', 'result-screen'].forEach(s => {
+                document.getElementById(s).classList.add('hidden');
+            });
+            const el = document.getElementById(id);
+            el.classList.remove('hidden');
+            el.style.animation = 'none';
+            el.offsetHeight;
+            el.style.animation = 'fadeIn 0.3s ease both';
+        }
+
+        function startTest() {
+            current = 0; total = 0;
+            show('question-screen');
+            renderQuestion();
+        }
+
+        function renderQuestion() {
+            const q = questions[current];
+            document.getElementById('q-counter').textContent = `Pregunta ${current + 1} de ${questions.length}`;
+            document.getElementById('progress-fill').style.width = `${((current + 1) / questions.length) * 100}%`;
+            document.getElementById('q-text').textContent = q.text;
+
+            const container = document.getElementById('options-container');
+            container.innerHTML = '';
+            q.options.forEach(opt => {
+                const btn = document.createElement('button');
+                btn.className = 'option-btn';
+                btn.innerHTML = `
+                    <span>${opt.text}</span>
+                    <div class="option-arrow">
+                        <svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="3,2 7,5 3,8"/>
+                        </svg>
+                    </div>`;
+                btn.onclick = () => selectOption(btn, opt.score);
+                container.appendChild(btn);
+            });
+        }
+
+        function selectOption(btn, score) {
+            document.querySelectorAll('.option-btn').forEach(b => b.disabled = true);
+            btn.classList.add('selected');
+            total += score;
+            setTimeout(() => {
+                if (current < questions.length - 1) {
+                    current++;
+                    renderQuestion();
+                } else {
+                    show('name-screen');
+                    document.getElementById('name-input').focus();
+                }
+            }, 350);
+        }
+
+        function getProfile(pct) {
+            if (pct <= 30) return "Eficiencia Sostenible";
+            if (pct <= 65) return "Rendimiento bajo Alarma";
+            return "Fuga Crítica de Energía";
+        }
+
+        async function sendBrevoEmail(nombre, email, perfil) {
+            try {
+                await fetch('/.netlify/functions/send-email', {
+                    method: 'POST',
+                    headers: { 'content-type': 'application/json' },
+                    body: JSON.stringify({ nombre, email, perfil })
+                });
+            } catch (e) {
+                // Fallo silencioso — el usuario igual ve su resultado
+            }
+        }
+
+        function submitName() {
+            const nameVal = document.getElementById('name-input').value.trim();
+            const emailVal = document.getElementById('email-input').value.trim();
+            const emailError = document.getElementById('email-error');
+
+            const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailVal);
+            if (!emailOk) {
+                emailError.style.display = 'block';
+                document.getElementById('email-input').focus();
+                return;
+            }
+            emailError.style.display = 'none';
+
+            userName = nameVal || "¡";
+
+            const max = questions.length * 5;
+            const pct = (total / max) * 100;
+            const perfil = getProfile(pct);
+
+            // Envío email automático via Brevo
+            sendBrevoEmail(nameVal, emailVal, perfil);
+
+            // Guardar en Netlify Forms como backup
+            const formData = new FormData();
+            formData.append('form-name', 'diagnostico');
+            formData.append('nombre', nameVal);
+            formData.append('email', emailVal);
+            formData.append('perfil', perfil);
+            formData.append('puntaje', Math.round(pct) + '%');
+            fetch('/', { method: 'POST', body: formData }).catch(() => { });
+
+            showResult();
+        }
+
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Enter' && !document.getElementById('name-screen').classList.contains('hidden')) {
+                submitName();
+            }
+        });
+
+        function showResult() {
+            show('result-screen');
+
+            const max = questions.length * 5;
+            const pct = (total / max) * 100;
+
+            const greeting = userName && userName !== "¡" ? `${userName}, tu resultado es:` : "Tu resultado es:";
+            document.getElementById('result-name-greeting').textContent = greeting;
+
+            const titleEl = document.getElementById('result-title');
+            const descEl = document.getElementById('result-desc');
+            const iconEl = document.getElementById('result-icon');
+            const gauge = document.getElementById('gauge-fill');
+            const ctaTitle = document.getElementById('cta-title');
+            const ctaSub = document.getElementById('cta-sub');
+            const ctaBtn = document.getElementById('cta-btn');
+            const ctaBtnText = document.getElementById('cta-btn-text');
+            const ctaIconPlaceholder = document.getElementById('cta-icon-placeholder');
+
+            let category, color, bgColor, iconSvg, desc, ctaTitleText, ctaSubText, waMsg, btnLabel, btnUrl, showWaIcon;
+
+            const waIconSvg = `<svg viewBox="0 0 24 24" fill="currentColor" style="width:18px;height:18px"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M11.999 2C6.477 2 2 6.478 2 12c0 1.867.502 3.618 1.38 5.126L2.015 22l4.989-1.312A9.955 9.955 0 0 0 12 22c5.523 0 10-4.478 10-10S17.522 2 11.999 2zm0 18a7.964 7.964 0 0 1-4.073-1.115l-.292-.174-3.018.793.806-2.945-.19-.302A7.95 7.95 0 0 1 4 12c0-4.411 3.589-8 8-8s8 3.589 8 8-3.588 8-7.999 8z"/></svg>`;
+
+            if (pct <= 30) {
+                category = "Eficiencia Sostenible";
+                color = "#2e6b3e";
+                bgColor = "#e8f4ec";
+                iconSvg = `<svg viewBox="0 0 24 24" fill="none" stroke="${color}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>`;
+                desc = "Tu sistema está regulado. Tenés una buena base de bienestar inteligente. Este es el momento ideal para optimizar y sostener tu energía incluso en momentos de alta demanda.";
+                ctaTitleText = "Llevá tu bienestar al siguiente nivel";
+                ctaSubText = "Bienestar Inteligente es el programa para quienes quieren convertir su equilibrio actual en un sistema que dure toda la vida.";
+                btnLabel = "Conocer Bienestar Inteligente";
+                btnUrl = "https://bienestar-inteligente.netlify.app";
+                showWaIcon = false;
+                ctaBtn.onclick = (e) => { e.preventDefault(); window.open(btnUrl, '_blank'); };
+                ctaBtn.removeAttribute('href');
+            } else if (pct <= 65) {
+                category = "Rendimiento bajo Alarma";
+                color = "#8a5c00";
+                bgColor = "#fdf3e0";
+                iconSvg = `<svg viewBox="0 0 24 24" fill="none" stroke="${color}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>`;
+                desc = "Estás operando desde el sobreesfuerzo. Tu éxito es real, pero biológicamente estás pagando un precio alto. El sistema nervioso en modo alerta crónica necesita una salida diferente a la fuerza de voluntad.";
+                ctaTitleText = "Es momento de cambiar el sistema, no el esfuerzo";
+                ctaSubText = "Agendá una consultoría de 15 minutos para analizar las fugas específicas detectadas en tu diagnóstico.";
+                waMsg = `Hola Silvina! Hice el Diagnóstico de Capacidad Operativa y mi resultado fue: *${category}*. Me gustaría agendar la consultoría de 15 minutos.`;
+                btnLabel = "Agendar consultoría de 15\"";
+                showWaIcon = true;
+                ctaBtn.onclick = null;
+                ctaBtn.href = `https://wa.me/${WA}?text=${encodeURIComponent(waMsg)}`;
+            } else {
+                category = "Fuga Crítica de Energía";
+                color = "#8b1a1a";
+                bgColor = "#fdf0f0";
+                iconSvg = `<svg viewBox="0 0 24 24" fill="none" stroke="${color}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636"/></svg>`;
+                desc = "Tu sistema nervioso está en modo supervivencia. Tu claridad, tu toma de decisiones y tu energía están comprometidas por el desgaste crónico. No es falta de voluntad — es biología. Y tiene solución.";
+                ctaTitleText = "Recuperar tu centro es posible";
+                ctaSubText = "Agendá una consultoría de 15 minutos para analizar las fugas específicas y diseñar un primer paso concreto hacia tu bienestar.";
+                waMsg = `Hola Silvina! Hice el Diagnóstico de Capacidad Operativa y mi resultado fue: *${category}*. Me gustaría agendar la consultoría de 15 minutos urgente.`;
+                btnLabel = "Agendar consultoría de 15\"";
+                showWaIcon = true;
+                ctaBtn.onclick = null;
+                ctaBtn.href = `https://wa.me/${WA}?text=${encodeURIComponent(waMsg)}`;
+            }
+
+            titleEl.textContent = category;
+            titleEl.style.color = color;
+            descEl.textContent = desc;
+            ctaTitle.textContent = ctaTitleText;
+            ctaSub.textContent = ctaSubText;
+            ctaBtnText.textContent = btnLabel;
+
+            ctaIconPlaceholder.innerHTML = showWaIcon ? waIconSvg : "";
+
+            iconEl.style.background = bgColor;
+            iconEl.innerHTML = iconSvg;
+
+            gauge.style.background = color;
+            setTimeout(() => { gauge.style.width = pct + '%'; }, 100);
+        }
+
+        function shareResult() {
+            const title = document.getElementById('result-title').textContent;
+            const greeting = document.getElementById('result-name-greeting').textContent;
+            const appUrl = "https://test-silvina-calosso.netlify.app/";
+            const text = `Hice el Diagnóstico de Capacidad Operativa de Silvina Calosso.\n${greeting} "${title}"\n¿Cuál es el tuyo? → ${appUrl}`;
+
+            const linkedinUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(appUrl)}`;
+            window.open(linkedinUrl, '_blank');
+
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(text).then(() => {
+                    const el = document.getElementById('share-copied');
+                    el.textContent = '✓ Portapapeles listo para pegar en LinkedIn.';
+                    el.style.opacity = 1;
+                    setTimeout(() => { el.style.opacity = 0; }, 3500);
+                });
+            } else {
+                const ta = document.createElement('textarea');
+                ta.value = text;
+                document.body.appendChild(ta);
+                ta.select();
+                document.execCommand('copy');
+                document.body.removeChild(ta);
+                const el = document.getElementById('share-copied');
+                el.textContent = '✓ Texto copiado para compartir.';
+                el.style.opacity = 1;
+                setTimeout(() => { el.style.opacity = 0; }, 3500);
+            }
+        }
+    </script>
+</body>
+
+</html>
