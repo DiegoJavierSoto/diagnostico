@@ -3,17 +3,11 @@ exports.handler = async function(event) {
         return { statusCode: 405, body: 'Method Not Allowed' };
     }
 
-    // HARDCODED TEMPORAL PARA PRUEBA
-    const BREVO_API_KEY = 'xsmtpsib-30df57f01c6a72b040d0b791acc7c39892509ecea4b8a5632823063b5d53dd44-' + 'JOLFu3wA6WEHu8FN';
-    console.log("==== DEBUG INFO ====");
-    console.log("Is BREVO_API_KEY undefined?", typeof BREVO_API_KEY === 'undefined');
-    console.log("API Key starts with:", BREVO_API_KEY ? BREVO_API_KEY.substring(0, 5) : "NULL");
-    console.log("====================");
-    const TEMPLATE_IDS = {
-        'Eficiencia Sostenible': 5,
-        'Rendimiento bajo Alarma': 6,
-        'Fuga Crítica de Energía': 7
-    };
+    const RESEND_API_KEY = process.env.RESEND_API_KEY;
+
+    if (!RESEND_API_KEY) {
+        return { statusCode: 500, body: 'Falta la clave de API de Resend en el servidor' };
+    }
 
     let body;
     try {
@@ -28,30 +22,37 @@ exports.handler = async function(event) {
         return { statusCode: 400, body: 'Faltan datos' };
     }
 
-    const templateId = TEMPLATE_IDS[perfil];
-    if (!templateId) {
-        return { statusCode: 400, body: 'Perfil no válido' };
-    }
-
     try {
-        const response = await fetch('https://api.brevo.com/v3/smtp/email', {
+        const response = await fetch('https://api.resend.com/emails', {
             method: 'POST',
             headers: {
-                'accept': 'application/json',
-                'api-key': BREVO_API_KEY,
-                'content-type': 'application/json'
+                'Authorization': `Bearer ${RESEND_API_KEY}`,
+                'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                templateId: templateId,
-                to: [{ email: email, name: nombre }],
-                params: { NOMBRE: nombre }
+                from: 'onboarding@resend.dev',
+                to: 'diegosoto.mdp@gmail.com',
+                subject: `Nuevo Diagnóstico de ${nombre}`,
+                html: `
+                    <div style="font-family: sans-serif; padding: 20px; color: #333;">
+                        <h2 style="color: #000;">¡Nuevo Diagnóstico Recibido!</h2>
+                        <p>Alguien completó el formulario en tu página web. Aquí están sus datos:</p>
+                        <div style="background-color: #f5f5f5; padding: 15px; border-radius: 5px; margin-top: 15px;">
+                            <p><strong>Nombre:</strong> ${nombre}</p>
+                            <p><strong>Email del cliente:</strong> ${email}</p>
+                            <p><strong>Perfil (Diagnóstico):</strong> ${perfil}</p>
+                        </div>
+                        <br>
+                        <p><em>Recuerda contactar a este cliente manualmente para enviarle sus resultados correspondientes a su perfil.</em></p>
+                    </div>
+                `
             })
         });
 
         const result = await response.json();
 
         if (!response.ok) {
-            console.error('Brevo error:', result);
+            console.error('Resend error:', result);
             return {
                 statusCode: 500,
                 body: JSON.stringify({ error: result })
@@ -60,7 +61,7 @@ exports.handler = async function(event) {
 
         return {
             statusCode: 200,
-            body: JSON.stringify({ success: true, messageId: result.messageId })
+            body: JSON.stringify({ success: true, id: result.id })
         };
 
     } catch (err) {
