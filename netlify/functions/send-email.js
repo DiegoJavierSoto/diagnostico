@@ -3,7 +3,8 @@ exports.handler = async function(event) {
         return { statusCode: 405, body: 'Method Not Allowed' };
     }
 
-    const BREVO_API_KEY = process.env.BREVO_API_KEY;
+    // Limpiar la clave de posibles espacios invisibles o comillas accidentales
+    const BREVO_API_KEY = (process.env.BREVO_API_KEY || '').replace(/["']/g, "").trim();
     console.log("==== DEBUG INFO ====");
     console.log("Is BREVO_API_KEY undefined?", typeof BREVO_API_KEY === 'undefined');
     console.log("API Key starts with:", BREVO_API_KEY ? BREVO_API_KEY.substring(0, 5) : "NULL");
