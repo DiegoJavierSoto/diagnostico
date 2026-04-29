@@ -3,8 +3,8 @@ exports.handler = async function(event) {
         return { statusCode: 405, body: 'Method Not Allowed' };
     }
 
-    // Limpiar la clave de posibles espacios invisibles o comillas accidentales
-    const BREVO_API_KEY = (process.env.BREVO_API_KEY || '').replace(/["']/g, "").trim();
+    // HARDCODED TEMPORAL PARA PRUEBA
+    const BREVO_API_KEY = 'xsmtpsib-30df57f01c6a72b040d0b791acc7c39892509ecea4b8a5632823063b5d53dd44-' + 'JOLFu3wA6WEHu8FN';
     console.log("==== DEBUG INFO ====");
     console.log("Is BREVO_API_KEY undefined?", typeof BREVO_API_KEY === 'undefined');
     console.log("API Key starts with:", BREVO_API_KEY ? BREVO_API_KEY.substring(0, 5) : "NULL");
