@@ -4,6 +4,10 @@ exports.handler = async function(event) {
     }
 
     const BREVO_API_KEY = process.env.BREVO_API_KEY;
+    console.log("==== DEBUG INFO ====");
+    console.log("Is BREVO_API_KEY undefined?", typeof BREVO_API_KEY === 'undefined');
+    console.log("API Key starts with:", BREVO_API_KEY ? BREVO_API_KEY.substring(0, 5) : "NULL");
+    console.log("====================");
     const TEMPLATE_IDS = {
         'Eficiencia Sostenible': 5,
         'Rendimiento bajo Alarma': 6,
